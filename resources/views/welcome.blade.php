@@ -1,7 +1,7 @@
 @extends('partials.layout')
 @section('title', 'Welcome')
 @section('content')
-    <div class="container mx-8">
+    <div class="container mx-auto">
         <div class="my-2 text-center">
             {{ $posts->links() }}
         </div>
