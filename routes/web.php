@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PublicController::class, 'index']);
 
+Route::get('/secure', [PublicController::class, 'secure'])->middleware(['password.confirm']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
