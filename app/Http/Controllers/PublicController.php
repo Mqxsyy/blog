@@ -13,7 +13,13 @@ class PublicController extends Controller
         return view('welcome', compact('posts'));
     }
 
-    public function secure(){
+    public function secure()
+    {
         return 'Secure';
+    }
+
+    public function post(Post $post)
+    {
+        return view('post', compact('post'));
     }
 }
