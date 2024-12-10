@@ -12,6 +12,7 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'body'];
+    protected $withCount = ['comments', 'likes'];
 
     public function snippet(): Attribute
     {
@@ -38,6 +39,11 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 
     /**
