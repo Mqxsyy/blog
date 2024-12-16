@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -27,7 +28,11 @@ class CommentController extends Controller
      */
     public function store(StoreCommentRequest $request)
     {
-        //
+        $comment = new Comment($request->validated());
+        $comment->user_id = Auth::id();
+        $comment->post_id = $request->input('post_id');
+        $comment->save();
+        return redirect()->route('post', ['post' => $request->input('post_id')]);
     }
     /**
      * Display the specified resource.
